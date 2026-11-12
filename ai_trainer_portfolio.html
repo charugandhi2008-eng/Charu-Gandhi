@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of an AI Trainer passionate about technology, application development, swimming, hiking and reading.">
+  <title>Personal Portfolio | AI Trainer</title>
+  <style>
+    :root {
+      --navy: #172554;
+      --navy-deep: #101a3d;
+      --purple: #8b7cf6;
+      --lavender: #eeeaff;
+      --ink: #202744;
+      --muted: #66708a;
+      --paper: #fbfaff;
+      --white: #ffffff;
+      --line: #e8e7f2;
+      --shadow: 0 18px 50px rgba(28, 35, 80, .10);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(232,231,242,.85);
+    }
+    .nav {
+      min-height: 76px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { font-size: 1.1rem; font-weight: 800; letter-spacing: -.04em; color: var(--navy); }
+    .brand span { color: var(--purple); }
+    .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
+    .nav-links a { font-size: .92rem; font-weight: 650; color: #505a76; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-cta {
+      padding: 10px 18px; border-radius: 999px; background: var(--navy);
+      color: var(--white) !important;
+    }
+    .nav-cta:hover { background: var(--purple); }
+
+    .hero {
+      position: relative; overflow: hidden; padding: 92px 0 100px;
+      background: radial-gradient(circle at 82% 25%, #e6e1ff 0, transparent 28%),
+                  linear-gradient(135deg, #f8f7ff 0%, #fff 55%, #f1efff 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 330px; height: 330px; border-radius: 50%;
+      border: 1px solid rgba(139,124,246,.18); right: -110px; bottom: -170px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 70px; position: relative; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; padding: 7px 13px;
+      border: 1px solid #ded9ff; background: rgba(255,255,255,.75);
+      border-radius: 999px; color: #6658cf; font-size: .78rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .12em;
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #8b7cf6; }
+    h1 {
+      margin: 22px 0 18px; max-width: 680px; color: var(--navy-deep);
+      font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.06; letter-spacing: -.065em;
+    }
+    h1 span { color: var(--purple); }
+    .hero-copy { max-width: 650px; color: var(--muted); font-size: 1.05rem; }
+    .tagline { margin-top: 18px; color: var(--navy); font-weight: 750; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 13px 21px; border: 1px solid transparent; border-radius: 999px;
+      font: inherit; font-weight: 750; transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer;
+    }
+    .button:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(23,37,84,.16); }
+    .button-primary { color: white; background: var(--navy); }
+    .button-primary:hover { background: #2a3d7a; }
+    .button-secondary { color: var(--navy); background: white; border-color: var(--line); }
+    .visual-wrap { display: flex; justify-content: center; position: relative; }
+    .profile-visual {
+      width: min(360px, 100%); aspect-ratio: 4 / 4.5; border-radius: 48% 48% 30px 30px;
+      background: linear-gradient(145deg, #c9c1ff, #edeaff 58%, #d9e5ff);
+      display: grid; place-items: center; position: relative; overflow: hidden;
+      box-shadow: 0 25px 70px rgba(74,64,160,.18);
+      border: 9px solid rgba(255,255,255,.75);
+    }
+    .profile-visual::before, .profile-visual::after {
+      content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.34);
+    }
+    .profile-visual::before { width: 230px; height: 230px; top: 35px; right: -75px; }
+    .profile-visual::after { width: 170px; height: 170px; bottom: -55px; left: -45px; }
+    .profile-icon { position: relative; z-index: 1; font-size: 8rem; filter: drop-shadow(0 15px 12px rgba(23,37,84,.12)); }
+    .floating-note {
+      position: absolute; bottom: 28px; left: -24px; z-index: 2; padding: 13px 17px;
+      background: white; border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); color: var(--navy); font-size: .88rem; font-weight: 750;
+    }
+    .floating-note span { display: block; color: var(--muted); font-size: .73rem; font-weight: 550; }
+
+    section { padding: 88px 0; }
+    .section-heading { max-width: 650px; margin: 0 auto 42px; text-align: center; }
+    .section-kicker { color: #7668df; text-transform: uppercase; letter-spacing: .15em; font-size: .75rem; font-weight: 850; }
+    h2 { margin: 8px 0 12px; color: var(--navy); font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -.045em; line-height: 1.15; }
+    .section-heading p { color: var(--muted); }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .card {
+      overflow: hidden; background: white; border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: 0 8px 28px rgba(28,35,80,.045); transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .card-image { height: 225px; overflow: hidden; background: var(--lavender); }
+    .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .card:hover .card-image img { transform: scale(1.05); }
+    .card-content { padding: 25px 27px 28px; }
+    .card-label { color: #796ce0; font-size: .73rem; font-weight: 850; text-transform: uppercase; letter-spacing: .13em; }
+    h3 { margin: 6px 0 9px; color: var(--navy); font-size: 1.35rem; letter-spacing: -.025em; }
+    .card-content p { color: var(--muted); font-size: .96rem; }
+
+    .interests { background: #f2f0ff; }
+    .interests .card { border-color: rgba(255,255,255,.9); }
+
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+    .contact-intro h2 { margin-top: 10px; }
+    .contact-intro p { color: var(--muted); }
+    .contact-detail {
+      margin-top: 26px; padding: 18px; border-radius: 16px; background: #f3f1ff;
+      color: var(--navy); display: flex; align-items: center; gap: 13px;
+    }
+    .contact-detail .symbol { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: white; font-size: 1.2rem; }
+    .contact-detail small { display: block; color: var(--muted); }
+    .socials { display: flex; gap: 10px; margin-top: 20px; }
+    .socials a {
+      width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%;
+      background: var(--navy); color: white; font-size: .82rem; font-weight: 800; transition: background .2s, transform .2s;
+    }
+    .socials a:hover { background: var(--purple); transform: translateY(-3px); }
+    .contact-form {
+      padding: 30px; background: white; border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { margin-bottom: 17px; }
+    label { display: block; margin-bottom: 7px; color: var(--navy); font-size: .86rem; font-weight: 750; }
+    input, textarea {
+      width: 100%; padding: 13px 14px; border: 1px solid #dedfeb; border-radius: 12px;
+      background: #fdfdff; color: var(--ink); font: inherit; outline: none; transition: border .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(139,124,246,.13); }
+    textarea { min-height: 135px; resize: vertical; }
+    .form-note { margin-top: 12px; color: var(--muted); font-size: .78rem; }
+
+    footer { padding: 25px 0; background: var(--navy-deep); color: #dce1f5; text-align: center; font-size: .86rem; }
+    footer span { color: #b7aefe; }
+
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero { padding: 70px 0 78px; }
+      .visual-wrap { grid-row: 1; }
+      .profile-visual { width: 270px; }
+      .profile-icon { font-size: 6rem; }
+      .floating-note { left: -10px; bottom: 18px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+    }
+    @media (max-width: 620px) {
+      .nav { min-height: 68px; flex-wrap: wrap; padding: 13px 0; }
+      .nav-links { width: 100%; justify-content: space-between; gap: 8px; order: 2; }
+      .nav-links a { font-size: .78rem; }
+      .nav-cta { padding: 7px 10px; }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 66px 0; }
+      .card-image { height: 205px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .contact-form { padding: 22px; }
+      .hero-copy { font-size: .98rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#intro">My<span>Portfolio.</span></a>
+      <ul class="nav-links">
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a class="nav-cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="intro">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Welcome to my portfolio</div>
+          <h1>Hello, I'm an <span>AI Trainer!</span></h1>
+          <p class="hero-copy">I am currently working as an AI Trainer, teaching low-code and no-code tools to college graduates. My role involves helping students understand how technology and artificial intelligence can simplify application development and problem-solving. I enjoy sharing knowledge, guiding learners, and encouraging them to explore innovative digital solutions.</p>
+          <p class="tagline">Teaching technology. Inspiring creativity. Building digital skills.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Get in touch <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#hobbies">Explore my interests</a>
+          </div>
+        </div>
+        <div class="visual-wrap" aria-label="Decorative profile illustration">
+          <div class="profile-visual">
+            <div class="profile-icon" aria-hidden="true">👩‍💻</div>
+          </div>
+          <div class="floating-note">AI &amp; Learning <span>Making technology approachable</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hobbies">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">A little about me</div>
+          <h2>My Hobbies</h2>
+          <p>Activities that keep me curious, creative, active and always learning.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1000&q=85" alt="Swimmer moving through a clear blue swimming pool" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-label">Hobby 01</div>
+              <h3>Swimming</h3>
+              <p>Swimming is one of my favourite activities because it helps me stay physically active, relaxed, and refreshed. It improves fitness, builds confidence, and teaches discipline and consistency. It is also a wonderful way to take a break, recharge, and maintain a healthy balance in everyday life.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=85" alt="Creative team working with technology and computers" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-label">Hobby 02</div>
+              <h3>Application Development</h3>
+              <p>I enjoy application development because it allows me to turn creative ideas into practical digital solutions. Exploring different tools, experimenting with features, and creating useful applications help me improve my technical and problem-solving skills. I especially enjoy discovering how low-code and no-code platforms make building applications more accessible.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="interests" id="interests">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Beyond the everyday</div>
+          <h2>My Interests</h2>
+          <p>Experiences that help me explore the world and see things from fresh perspectives.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1000&q=85" alt="Hikers walking along a scenic mountain trail" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-label">Interest 01</div>
+              <h3>Hiking</h3>
+              <p>I enjoy hiking because it gives me an opportunity to explore nature, discover new places, and challenge myself physically. It also provides peace of mind and helps me develop patience and determination. Every trail offers a new experience and a chance to appreciate the beauty of the outdoors.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1000&q=85" alt="Open book and reading materials in a calm setting" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-label">Interest 02</div>
+              <h3>Book Reading</h3>
+              <p>Reading books is one of my favourite ways to gain knowledge and explore new perspectives. It improves my imagination, vocabulary, communication skills, and personal growth. Whether I am learning something new or getting absorbed in a story, reading gives me an opportunity to pause, reflect, and keep growing.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div class="contact-intro">
+          <div class="section-kicker">Let's connect</div>
+          <h2>Get in Touch</h2>
+          <p>Have a question, an idea, or an opportunity to discuss? Send me a message. I would be happy to connect and hear from you.</p>
+          <div class="contact-detail">
+            <div class="symbol" aria-hidden="true">✉</div>
+            <div><small>Email me</small><strong>your.email@example.com</strong></div>
+          </div>
+          <div class="socials" aria-label="Social media links">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+          </div>
+        </div>
+
+        <form class="contact-form" action="mailto:your.email@example.com" method="post" enctype="text/plain">
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="Name" type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" name="Email" type="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input id="subject" name="Subject" type="text" placeholder="What would you like to discuss?" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button class="button button-primary" type="submit">Send message <span aria-hidden="true">→</span></button>
+          <p class="form-note">This is a static webpage. The form uses your device's default email app and does not store submissions.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 <span>My Personal Portfolio</span>. All rights reserved.</div>
+  </footer>
+</body>
+</html>
